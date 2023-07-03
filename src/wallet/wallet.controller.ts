@@ -14,4 +14,12 @@ export class WalletController {
     const { address, token } = params;
     return this.walletService.getWalletTokenBalance(address, token);
   }
+
+  @Post('crypto-price')
+  async getFiatValue(
+    @Body() params: { crypto: string; amount: number; currency: string },
+  ) {
+    const { crypto, amount, currency } = params;
+    return this.walletService.getFiatValue(crypto, amount, currency);
+  }
 }
